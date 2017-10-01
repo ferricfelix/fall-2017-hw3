@@ -28,8 +28,7 @@ The specifications below indicate what classes/methods must be implemented to re
 #### Library Class
 
 - Write a class named `Library`, each instance of which represents a single public library in Chicago.
-- The `__init__(self, data)` method should receive a dictionary corresponding to a row in the CSV file (see suggested CSV reading code in [City Class](#City-Class)).
-- The initializer should create the following attributes:
+- The `__init__(self, data)` method should receive a dictionary corresponding to a row in the CSV file (see suggested CSV reading code in [City Class](#city-class)). In its body, it should create the following attributes:
 
   - `self.name` -- name of the library
   - `self.hours` -- hours of operation (it's up to you how you want to store this data)
@@ -40,12 +39,12 @@ The specifications below indicate what classes/methods must be implemented to re
   - `self.phone` -- the phone number of the library
   - `self.url` -- the URL for the library's website
   - `self.location` -- the location of the library as an instance of
-    `Coordinate` (see specifications in [Coordinate Class](#Coordinate-Class))
+    `Coordinate` (see specifications in [Coordinate Class](#coordinate-class))
 
 - The `open_website(self)` method should open the website of the library using the [webbrowser.open_new_tab()](https://docs.python.org/3/library/webbrowser.html#webbrowser.open_new_tab) function from the standard library.
 - The `is_open(self, time)` method should accept an instance of [datetime.datetime](https://docs.python.org/3/library/datetime.html#datetime.datetime) and return a boolean indicating whether the library is open.
-- The `distance(self, coord)` method should accept an instance of `Coordinate` and return the distance in miles "as the crow flies" from the specified location to the library. See the [description below](#Calculating-distance-between-points) for how to calculate distances using latitudes/longitudes.
-- The `full_address(self)` method should return a multi-line string with the street address, city, state, and ZIP code of the library
+- The `distance(self, coord)` method should accept an instance of `Coordinate` and return the distance in miles "as the crow flies" from the specified location to the library. See the [description below](#calculating-distance-between-points) for how to calculate distances using latitudes/longitudes.
+- The `full_address(self)` method should return a multi-line string (that is, a string with a newline character within it) with the street address, city, state, and ZIP code of the library
 
 #### Coordinate Class
 
