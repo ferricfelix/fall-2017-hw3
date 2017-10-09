@@ -10,10 +10,25 @@ In some programming languages (e.g., JavaScript), map, filter, and reduce are ef
 
 ### Specifications
 
-- The class should be named `FunctionalList`.
+- The class should be named `FunctionalList` and should inherit from the built-in `list` class.
 - The `map` method should accept a function as its only argument  and return a `FunctionalList` that results from applying a `map` with the specified function on the original sequence.
 - The `filter` method should accept a function as its only argument and return a `FunctionalList` that results from applying a `filter` with the specified function on the original sequence.
-- The `reduce` method should accept a function (of two arguments) as its only argument and return a `FunctionalList` that results from applying `functools.reduce` with the specified function on the original sequence.
+- The `reduce` method should accept a function (of two arguments) as its only argument and return the object that results from applying `functools.reduce` with the specified function on the original sequence.
+
+### Example Interaction
+
+```pycon
+>>> x = FunctionalList(range(10))
+>>> x
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> x.map(lambda x: x**2)
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> x.map(lambda x: x**2)
+     .filter(lambda x: x > 10)
+[16, 25, 36, 49, 64, 81]
+>>> x.reduce(lambda x, y: x+y)
+45
+```
 
 ## Problem 2: Chicago Public Libraries
 
@@ -58,16 +73,16 @@ The specifications below indicate what classes/methods must be implemented to re
 #### City Class
 
 - The `City` class stores a list of libraries in the city.
-- The `__init__(self, filename)` method accepts the filename for to the CSV file in which our library data is stored. It should create an attribute called `libraries` that is a list of `Library` instances. To iterate over the rows in the CSV file, you can use the following code:
+- The `__init__(self, filename)` method accepts a filename for the CSV file in which our library data is stored. It should create an attribute called `libraries` that is a list of `Library` instances. To iterate over the rows in the CSV file, you can use the following code:
 
-    ```python
-  import csv
+```python
+import csv
 
-  with open(filename, 'r', newline='') as f:
-      reader = csv.DictReader(f)
-      for row in reader:
-          ...
-    ```
+with open(filename, 'r', newline='') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        ...
+```
 
 - The `nearest_library(self, coord)` method accepts an instance of `Coordinate` and returns the `Library` instance that is closest to the given coordinates.
 
@@ -77,11 +92,11 @@ Since the library locations are given as latitude/longitude coordinates, we need
 
 ![Haversine formula](http://latex2png.com/output//latex_864209a59a6d48323e698d6899ee6f06.png)
 
-where `d` is the distance between the two points, `r` is the radius of the Earth (use 3961 miles), ![varphi1](http://latex2png.com/output//latex_a4acc5e8a6c299501f90c28a2ddee69a.png) and ![varphi2](http://latex2png.com/output//latex_7256d5a2af8a38823209a802a4b923ab.png) are the latitudes of the two points in radians, and ![lambda1](http://latex2png.com/output//latex_3b3fb8151d8990dfafdc7954410136ff.png) and ![lambda2](http://latex2png.com/output//latex_e3ca12d2ef3a5f3b30188840c05480c7.png) are the longitudes of the two points in radians. Note that the data you are given is in degrees, not radians, so make sure you convert it first.
+where `d` is the distance between the two points, `r` is the radius of the Earth (use 3961 miles), ![varphi1](http://latex2png.com/output//latex_a4acc5e8a6c299501f90c28a2ddee69a.png) and ![varphi2](http://latex2png.com/output//latex_7256d5a2af8a38823209a802a4b923ab.png) are the latitudes of the two points in radians, and ![lambda1](http://latex2png.com/output//latex_3b3fb8151d8990dfafdc7954410136ff.png) and ![lambda2](http://latex2png.com/output//latex_e3ca12d2ef3a5f3b30188840c05480c7.png) are the longitudes of the two points in radians. Note that the data you are given is in degrees, not radians, so make sure you [convert it](https://en.wikipedia.org/wiki/Radian#Conversion_between_radians_and_degrees) first.
 
 ### Example Interaction
 
-The example below shows an example interaction with these classes at a Python console. Note that for this example, I've implemented a `__repr__()` method in the `Library` and `Coordinate` classes to get a nice string representation (we will discuss this further in week 4); feel free to do the same if you wish.
+The example below shows an example interaction with these classes at a Python console. Note that for this example, I've implemented a [`__repr__()`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) method in the `Library` and `Coordinate` classes to get a nice string representation (we will discuss this further in week 4); feel free to do the same if you wish.
 
 ```pycon
 >>> chicago = City('libraries.csv')
