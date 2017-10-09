@@ -4,6 +4,8 @@
 
 **Due**: October 15 at 11:59pm CT
 
+For each problem, you are to submit a file named `problem<N>.py` where `<N>` is the number of the problem (e.g. `problem1.py`).
+
 ## Problem 1: Chainable map/filter/reduce
 
 In some programming languages (e.g., JavaScript), map, filter, and reduce are effectively methods of iterable types. For this problem, you are to create a sub-class of a normal Python list that has map, filter, and reduce methods that can be chained.
