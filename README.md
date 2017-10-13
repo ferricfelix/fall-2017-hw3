@@ -13,9 +13,9 @@ In some programming languages (e.g., JavaScript), map, filter, and reduce are ef
 ### Specifications
 
 - The class should be named `FunctionalList` and should inherit from the built-in `list` class.
-- The `map` method should accept a function as its only argument  and return a `FunctionalList` that results from applying a `map` with the specified function on the original sequence.
-- The `filter` method should accept a function as its only argument and return a `FunctionalList` that results from applying a `filter` with the specified function on the original sequence.
-- The `reduce` method should accept a function (of two arguments) as its only argument and return the object that results from applying `functools.reduce` with the specified function on the original sequence.
+- The `map` method should accept a function as its only argument (other than `self`) and return a new `FunctionalList` that results from applying a `map` with the specified function on the original sequence.
+- The `filter` method should accept a function as its only argument (other than `self`) and return a new `FunctionalList` that results from applying a `filter` with the specified function on the original sequence.
+- The `reduce` method should accept a function (of two arguments) as its only argument and return the object that results from applying [functools.reduce](https://docs.python.org/3/library/functools.html#functools.reduce) with the specified function on the original sequence.
 
 ### Example Interaction
 
